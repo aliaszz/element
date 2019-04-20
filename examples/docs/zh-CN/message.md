@@ -47,6 +47,7 @@
   <el-button :plain="true" @click="open3">警告</el-button>
   <el-button :plain="true" @click="open">消息</el-button>
   <el-button :plain="true" @click="open4">错误</el-button>
+  <el-button :plain="true" @click="open5">box</el-button>
 </template>
 
 <script>
@@ -71,6 +72,21 @@
 
       open4() {
         this.$message.error('错了哦，这是一条错误消息');
+      },
+      open5() {
+        this.$message({
+          message: '登录了',
+          type: 'box',
+          duration: 300000,
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          confirmCallback: () => {
+            console.log('确定');
+          },
+          cancelCallback: () => {
+            console.log('取消');
+          }
+        })
       }
     }
   }

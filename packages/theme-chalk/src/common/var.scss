@@ -38,16 +38,20 @@ $--color-warning: #E6A23C !default;
 $--color-danger: #F56C6C !default;
 /// color|1|SecondaryColor|1
 $--color-info: #909399 !default;
+/// color|1|SecondaryColor|1
+$--color-box: #FFFFFF !default;
 
 $--color-success-light: mix($--color-white, $--color-success, 80%) !default;
 $--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
 $--color-danger-light: mix($--color-white, $--color-danger, 80%) !default;
 $--color-info-light: mix($--color-white, $--color-info, 80%) !default;
+$--color-box-light: mix($--color-white, $--color-box, 80%) !default;
 
 $--color-success-lighter: mix($--color-white, $--color-success, 90%) !default;
 $--color-warning-lighter: mix($--color-white, $--color-warning, 90%) !default;
 $--color-danger-lighter: mix($--color-white, $--color-danger, 90%) !default;
 $--color-info-lighter: mix($--color-white, $--color-info, 90%) !default;
+$--color-box-lighter: mix($--color-white, $--color-box, 90%) !default;
 /// color|1|FontColor|2
 $--color-text-primary: #303133 !default;
 /// color|1|FontColor|2
@@ -366,6 +370,7 @@ $--message-success-color: $--color-success !default;
 $--message-info-color: $--color-info !default;
 $--message-warning-color: $--color-warning !default;
 $--message-danger-color: $--color-danger !default;
+$--message-box-color: $--color-box !default;
 
 /* Notification
 -------------------------- */

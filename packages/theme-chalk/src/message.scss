@@ -17,6 +17,7 @@
   overflow: hidden;
   padding: $--message-padding;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 
   @include when(center) {
@@ -29,6 +30,12 @@
     }
   }
 
+  &.el-message--box{
+    flex-direction: row-reverse;
+    .el-message__content {
+      min-width: 70%;
+    }
+  }
   p {
     margin: 0;
   }
@@ -40,11 +47,14 @@
   }
 
   @include m(success) {
-    background-color: $--color-success-lighter;
-    border-color: $--color-success-light;
+    //background-color: $--color-success-lighter;
+    //border-color: $--color-success-light;
+    background-color: #ffffff;
+    box-shadow: 0 0 7px 0 rgba(149,149,149,0.50);
 
     .el-message__content {
-      color: $--message-success-color;
+      //color: $--message-success-color;
+      color: #000000;
     }
   }
 
@@ -66,13 +76,22 @@
     }
   }
 
+  @include m(box) {
+    background-color: #ffffff;
+    box-shadow: 0 0 7px 0 rgba(149,149,149,0.50);
+
+    .el-message__content {
+      color: #000000;
+    }
+  }
+
   @include e(icon) {
     margin-right: 10px;
   }
 
   @include e(content) {
     padding: 0;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1;
     &:focus {
       outline-width: 0;
@@ -110,6 +129,28 @@
 
   & .el-icon-warning {
     color: $--message-warning-color;
+  }
+
+  & .el-message__button {
+    max-width: 100%;
+    display: flex;
+    font-size: 12px;
+    color: #4069AD;
+
+    .el-message__cancel {
+      color: #828282;
+      cursor: pointer;
+    }
+
+    .el-message__confirm {
+      color: #4069AD;
+      cursor: pointer;
+    }
+
+    .el-message__separator {
+      padding-top: 2px;
+      margin: 0 10px;
+    }
   }
 }
 

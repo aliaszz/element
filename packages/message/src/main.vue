@@ -12,8 +12,13 @@
       @mouseenter="clearTimer"
       @mouseleave="startTimer"
       role="alert">
-      <i :class="iconClass" v-if="iconClass"></i>
-      <i :class="typeClass" v-else></i>
+      <div class="el-message__button">
+        <p v-if="cancelButtonText" class="el-message__cancel"
+           @click="handleAction(cancelCallback)">{{ cancelButtonText }} ({{ time }})</p>
+        <p v-if="confirmButtonText && cancelButtonText" class="el-message__separator">|</p>
+        <p v-if="confirmButtonText" class="el-message__confirm"
+           @click="handleAction(confirmCallback)">{{ confirmButtonText }}</p>
+      </div>
       <slot>
         <p v-if="!dangerouslyUseHTMLString" class="el-message__content">{{ message }}</p>
         <p v-else v-html="message" class="el-message__content"></p>
@@ -28,7 +33,8 @@
     success: 'success',
     info: 'info',
     warning: 'warning',
-    error: 'error'
+    error: 'error',
+    box: 'box'
   };
 
   export default {
@@ -37,6 +43,8 @@
         visible: false,
         message: '',
         duration: 3000,
+        time: 0,
+        boxTimer: null,
         type: 'info',
         iconClass: '',
         customClass: '',
@@ -45,7 +53,11 @@
         closed: false,
         timer: null,
         dangerouslyUseHTMLString: false,
-        center: false
+        center: false,
+        confirmButtonText: '',
+        cancelButtonText: '',
+        confirmCallback: null,
+        cancelCallback: null
       };
     },
 
@@ -97,11 +109,32 @@
             this.close();
           }
         }
+      },
+      handleAction(action) {
+        if (!this.closed) {
+          if (typeof action === 'function') {
+            action();
+          }
+          this.close();
+        }
       }
     },
     mounted() {
       this.startTimer();
       document.addEventListener('keydown', this.keydown);
+      this.time = this.duration / 1000;
+      if (this.time >= 30) {
+        if (!this.boxTimer) {
+          this.boxTimer = setInterval(() => {
+            if (this.time > 0) {
+              this.time--;
+            } else {
+              clearInterval(this.boxTimer);
+              this.boxTimer = null;
+            }
+          }, 1000);
+        }
+      }
     },
     beforeDestroy() {
       document.removeEventListener('keydown', this.keydown);
