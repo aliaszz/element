@@ -136,6 +136,17 @@
   @include m(info) {
     @include button-variant($--button-info-font-color, $--button-info-background-color, $--button-info-border-color);
   }
+  @include m(sm-default) {
+    @include button-variant($--button-sm-default-font-color, $--button-sm-default-background-color, $--button-sm-default-border-color);
+    &:hover,
+    &:focus {
+      background: mix(#FFFFFF, $--button-sm-default-border-color, 80%);
+      color: $--button-sm-default-border-color;
+    }
+  }
+  @include m(sm-primary) {
+    @include button-variant(#000000, #FFC945, #FFC945);
+  }
   @include m(medium) {
     @include button-size($--button-medium-padding-vertical, $--button-medium-padding-horizontal, $--button-medium-font-size, $--button-medium-border-radius);
     @include when(circle) {
@@ -234,7 +245,7 @@
       z-index: 1;
     }
   }
-  
+
   & > .el-dropdown {
     & > .el-button {
       border-top-left-radius: 0;
@@ -243,7 +254,7 @@
     }
   }
 
-  @each $type in (primary, success, warning, danger, info) {
+  @each $type in (primary, success, warning, danger, info, sm-default, sm-primary) {
     .el-button--#{$type} {
       &:first-child {
         border-right-color: rgba($--color-white, 0.5);

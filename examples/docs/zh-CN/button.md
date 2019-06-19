@@ -15,6 +15,8 @@
   <el-button type="info">信息按钮</el-button>
   <el-button type="warning">警告按钮</el-button>
   <el-button type="danger">危险按钮</el-button>
+  <el-button type="sm-default">sm-default</el-button>
+  <el-button type="sm-primary">sm-primary</el-button>
 </el-row>
 
 <el-row>
