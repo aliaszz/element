@@ -212,5 +212,14 @@ MessageBox.close = () => {
   currentMsg = null;
 };
 
+MessageBox.changeMessage = (options) => {
+  MessageBox.close();
+  return MessageBox(merge({
+    title: 'title',
+    message: 'message',
+    showCancelButton: true
+  }, options));
+};
+
 export default MessageBox;
 export { MessageBox };

@@ -119,6 +119,8 @@
 ```html
 <template>
   <el-button type="text" @click="open4">点击打开 Message Box</el-button>
+  <el-button type="text" @click="changeMessage">Change Message</el-button>
+  
 </template>
 
 <script>
@@ -150,11 +152,18 @@
             }
           }
         }).then(action => {
+          this.$msgbox.changeMessage({
+            title: 'changeMessageTitle',
+            message: h('p', null, '666')
+          });
           this.$message({
             type: 'info',
             message: 'action: ' + action
           });
         });
+      },
+      changeMessage() {
+        this.$msgbox.changeMessage();
       }
     }
   }
