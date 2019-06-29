@@ -32,6 +32,7 @@
 
   &.el-message--box{
     flex-direction: row-reverse;
+    justify-content: space-between;
     .el-message__content {
       min-width: 70%;
     }

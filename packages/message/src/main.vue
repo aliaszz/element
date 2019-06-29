@@ -11,6 +11,7 @@
       v-show="visible"
       @mouseenter="clearTimer"
       @mouseleave="startTimer"
+      :style="{ width: width }"
       role="alert">
       <div class="el-message__button">
         <p v-if="cancelButtonText" class="el-message__cancel"
@@ -57,7 +58,8 @@
         confirmButtonText: '',
         cancelButtonText: '',
         confirmCallback: null,
-        cancelCallback: null
+        cancelCallback: null,
+        width: ''
       };
     },
 
@@ -123,7 +125,7 @@
       this.startTimer();
       document.addEventListener('keydown', this.keydown);
       this.time = this.duration / 1000;
-      if (this.time >= 30) {
+      if (this.time >= 3) {
         if (!this.boxTimer) {
           this.boxTimer = setInterval(() => {
             if (this.time > 0) {

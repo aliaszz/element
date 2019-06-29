@@ -75,9 +75,10 @@
       },
       open5() {
         this.$message({
-          message: '登录了',
+          message: '欢迎登录，您是否愿意实时接受邀请通知，回答有偿问题。',
           type: 'box',
-          duration: 300000,
+          duration: 3000,
+          width: '500px',
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           confirmCallback: () => {
