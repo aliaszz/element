@@ -13,6 +13,10 @@
       @mouseleave="startTimer"
       :style="{ width: width }"
       role="alert">
+      <slot>
+        <p v-if="!dangerouslyUseHTMLString" class="el-message__content">{{ message }}</p>
+        <p v-else v-html="message" class="el-message__content"></p>
+      </slot>
       <div class="el-message__button">
         <p v-if="cancelButtonText" class="el-message__cancel"
            @click="handleAction(cancelCallback)">{{ cancelButtonText }} ({{ time }})</p>
@@ -20,10 +24,7 @@
         <p v-if="confirmButtonText" class="el-message__confirm"
            @click="handleAction(confirmCallback)">{{ confirmButtonText }}</p>
       </div>
-      <slot>
-        <p v-if="!dangerouslyUseHTMLString" class="el-message__content">{{ message }}</p>
-        <p v-else v-html="message" class="el-message__content"></p>
-      </slot>
+
       <i v-if="showClose" class="el-message__closeBtn el-icon-close" @click="close"></i>
     </div>
   </transition>
@@ -101,6 +102,9 @@
           this.timer = setTimeout(() => {
             if (!this.closed) {
               this.close();
+              if (typeof this.cancelCallback === 'function') {
+                this.cancelCallback();
+              }
             }
           }, this.duration);
         }

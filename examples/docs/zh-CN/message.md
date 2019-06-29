@@ -77,10 +77,10 @@
         this.$message({
           message: '欢迎登录，您是否愿意实时接受邀请通知，回答有偿问题。',
           type: 'box',
-          duration: 3000,
-          width: '500px',
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+          duration: 300000,
+          width: '520px',
+          confirmButtonText: '我来回答',
+          cancelButtonText: '别烦我',
           confirmCallback: () => {
             console.log('确定');
           },
